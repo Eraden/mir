@@ -237,3 +237,6 @@ fabric.properties
 .idea
 build
 cmake-build-*
+
+# Project binary files
+.mir
