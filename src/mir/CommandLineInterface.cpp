@@ -19,6 +19,7 @@ CommandLineInterface::CommandLineInterface() :
     logger = std::make_shared<Logger>("mir");
     logger->setSeverity(Logger::Severity::ERROR);
     logger->addReceiver(std::make_shared<StandardConsoleOutput>());
+    url = std::make_shared<Database::Url>();
 }
 
 void CommandLineInterface::printHelp() {
@@ -28,7 +29,7 @@ void CommandLineInterface::printHelp() {
 fs::path CommandLineInterface::getMigrationsDir() {
     if (migrationsDir == nullptr) {
         auto pwd = fs::current_path();
-         migrationsDir = std::make_shared<fs::path>(fs::absolute(pwd / "db" / "migrations"));
+        migrationsDir = std::make_shared<fs::path>(fs::absolute(pwd / "db" / "migrations"));
     }
     return *migrationsDir;
 }

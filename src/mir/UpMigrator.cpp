@@ -13,7 +13,7 @@
 namespace UpMigrator {
     UpMigrator::UpMigrator(CommandLineInterface *cli) :
             cli(cli),
-            url(std::move(cli->url)),
+            url(cli->url),
             connection(std::make_unique<Database::Connection>(cli->url->c_str(), cli->logger)) {
     }
 
