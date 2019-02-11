@@ -13,7 +13,7 @@ mir --url setup my_db
 mir --url postgres://user:pass@localhost/my_db up
 mir --url postgres://user:pass@localhost/my_db down
 mir gen table table_name field_name:field_type:default_value field_name:field_type:default_value
-mir gqen t table_name field_name:field_type:default_value field_name:field_type:default_value
+mir gen t table_name field_name:field_type:default_value field_name:field_type:default_value
 mir g t table_name field_name:field_type:default_value field_name:field_type:default_value
 mir gt table_name field_name:field_type:default_value field_name:field_type:default_value
 ```
@@ -23,10 +23,10 @@ mir gt table_name field_name:field_type:default_value field_name:field_type:defa
 Field parts are:
 
 * field_name
-* field_type - default text
+* field_type - default `text`
 * default_value - default empty string
 
-`default_value` if string must be inside `'` characters. `:` is forbidden.
+`default_value` if it's a string must be inside `'` characters. `:` character is forbidden.
 
 ### Configuration
 
@@ -38,6 +38,12 @@ migrations-dir=db/migrations
 primary-keys=id,uuid
 put-timestamps=true
 ```
+
+* database-url - database connection info
+* migrations-dir - migrations files location
+* primary-keys - list of fields which will be `PRIMARY KEY UNIQUE` while generating new migration
+* put-timestamps - add `created_at timestamp` and `updated_at timestamp` to table
+
 ## Requirements
 
 * boost
