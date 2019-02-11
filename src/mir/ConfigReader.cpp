@@ -45,12 +45,10 @@ void ConfigReader::run() {
         } else if (line.find("put-timestamps=") != string::npos) {
             auto str = line.substr(line.find_first_of('=') + 1);
             cli->putTimestamps = str == "yes";
-        } else if (line.find("primary-keys") != string::npos) {
+        } else if (line.find("primary-keys=") != string::npos) {
             auto str = line.substr(line.find_first_of('=') + 1);
             cli->primaryKeys.resize(0);
-            for (auto i = 0; i <= str.length(); i++) {
-                auto c = str[i];
-                if (c == 0) break;
+            for (char c : str) {
                 if (cli->primaryKeys.empty() || c == ',') {
                     cli->primaryKeys.emplace_back();
                 }

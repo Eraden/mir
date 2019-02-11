@@ -7,7 +7,6 @@
 #include <string>
 #include <sstream>
 #include <memory>
-//#include <postgres_fe.h>
 #include <libpq-fe.h>
 
 #include <utils/Logger.hpp>

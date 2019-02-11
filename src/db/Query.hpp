@@ -9,8 +9,6 @@
 #include <libpq-fe.h>
 
 namespace Database {
-    struct NoResult {};
-
     template <class Model>
     class Query {
     public:

@@ -33,7 +33,7 @@ namespace MigrationDirectoryReader {
                 auto name = path.filename().string();
                 if (isMigrationDirectory(name)) {
                     auto n = name.substr(0, name.find_first_of('_'));
-                    entries.emplace_back(name, path, std::stol(n));
+                    entries.emplace_back(name, path, std::stoul(n));
                 }
             }
         }
@@ -45,9 +45,9 @@ namespace MigrationDirectoryReader {
         return entries;
     }
 
-    MigrationDirectory::MigrationDirectory(const std::string &name, const fs::path &path, long migration) :
+    MigrationDirectory::MigrationDirectory(const std::string &name, const fs::path &path, unsigned long migration) :
             name(name),
             path(path),
             migration(migration) {
     }
-};
+}

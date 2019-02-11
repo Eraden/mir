@@ -24,8 +24,6 @@ namespace mir {
         std::string name;
         std::string type;
         std::string defaultValue;
-//        bool unique = false;
-//        bool primaryKey = false;
     };
 
     class TableGenerator {

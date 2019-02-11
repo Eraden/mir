@@ -1,5 +1,7 @@
 # Mir
 
+![mir](https://png.pngtree.com/element_pic/20/16/02/0156af603863f3e.jpg)
+
 Simple migration runner
 
 ```bash
@@ -7,7 +9,7 @@ mir --url setup my_db
 mir --url postgres://user:pass@localhost/my_db up
 mir --url postgres://user:pass@localhost/my_db down
 mir gen table table_name field_name:field_type:default_value field_name:field_type:default_value
-mir gen t table_name field_name:field_type:default_value field_name:field_type:default_value
+mir gqen t table_name field_name:field_type:default_value field_name:field_type:default_value
 mir g t table_name field_name:field_type:default_value field_name:field_type:default_value
 mir gt table_name field_name:field_type:default_value field_name:field_type:default_value
 ```

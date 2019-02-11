@@ -17,10 +17,8 @@ message(INFO " Boost.Test libraries ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}")
 
 set(
         DB_SOURCE
-        src/db/ConnectionManager.cpp src/db/ConnectionManager.hpp
         src/db/Connection.cpp src/db/Connection.hpp
-        src/db/Query.cpp src/db/Query.hpp
-        src/db/models.hpp
+        src/db/Query.hpp
         src/db/Url.cpp src/db/Url.hpp
 )
 
@@ -95,3 +93,11 @@ enable_testing()
 
 add_test(NAME MirTest COMMAND ./mir_test)
 add_test(NAME DbTest COMMAND ./db_test)
+
+install(
+        TARGETS mir db utils
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib/mir
+        ARCHIVE DESTINATION lib/mir
+        INCLUDES DESTINATION include/mir
+)

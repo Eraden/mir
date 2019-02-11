@@ -13,12 +13,12 @@ namespace MigrationDirectoryReader {
 
     class MigrationDirectory {
     public:
-        explicit MigrationDirectory(const std::string &name, const fs::path &path, long migration);
+        explicit MigrationDirectory(const std::string &name, const fs::path &path, unsigned long migration);
 
         std::string name;
         fs::path path;
-        long migration;
+        unsigned long migration;
     };
 
     std::vector<MigrationDirectory> readMigrationDirectory(CommandLineInterface *cli);
-};
+}

@@ -38,7 +38,7 @@ namespace DownMigrator {
                     fs::ifstream ifs(down);
                     ss << ifs.rdbuf();
                 }
-                ss << "\nDELETE FROM _mir_migrations WHERE migration = " << e.migration << ";\n";
+                ss << ";\nDELETE FROM _mir_migrations WHERE migration = " << e.migration << ";\n";
                 ss << "COMMIT;\n";
                 auto contents = ss.str();
                 RunMigrationQuery runQuery(contents);

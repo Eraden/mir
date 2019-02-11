@@ -4,13 +4,13 @@
 
 #include "CommandLineInterface.hpp"
 
-const char *CommandLineInterface::HELP = ""
-                                         "mir - migrate your database\n"
-                                         "    --help | -h               display this message\n"
-                                         "    --url                     database url\n"
-                                         "    up                        run migrations from last saved point\n"
-                                         "    down                      reverse last migration\n"
-                                         "    setup [database name]     create database";
+const char *CommandLineInterface::HELP = R"(mir - migrate your database
+    --help | -h                                       display this message
+    --url                                             database url
+    up                                                run migrations from last saved point
+    down                                              reverse last migration
+    setup database_name                               create database
+    gen table table_name [field1:type1:default1]      generate migration)";
 
 CommandLineInterface::CommandLineInterface() :
         action(Action::Help),
