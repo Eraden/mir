@@ -7,7 +7,7 @@ add_definitions(-Wall -Wpedantic)
 
 find_package(Threads)
 find_package(PostgreSQL)
-find_package(Boost 1.69.0 COMPONENTS system filesystem thread unit_test_framework REQUIRED)
+find_package(Boost 1.69.0 COMPONENTS system filesystem unit_test_framework REQUIRED)
 
 include_directories(${PostgreSQL_INCLUDE_DIRS})
 include_directories(src)

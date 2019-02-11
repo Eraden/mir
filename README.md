@@ -1,6 +1,10 @@
 # Mir
 
-![mir](https://png.pngtree.com/element_pic/20/16/02/0156af603863f3e.jpg)
+![License](https://img.shields.io/github/license/Eraden/mir.svg?style=flat)
+![Version](https://img.shields.io/github/release/Eraden/mir.svg?style=flat)
+![Size](https://img.shields.io/github/languages/code-size/Eraden/mir.svg?style=flat)
+
+![mir](https://github.com/Eraden/mir/raw/master/public/mir.jpg)
 
 Simple migration runner
 
