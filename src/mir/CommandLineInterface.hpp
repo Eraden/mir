@@ -6,7 +6,8 @@
 
 #include <string>
 #include <iostream>
-#include <boost/filesystem.hpp>
+#include <boost/filesystem/path.hpp>
+#include <boost/filesystem/operations.hpp>
 #include <db/Connection.hpp>
 #include <db/Url.hpp>
 #include <utils/Logger.hpp>

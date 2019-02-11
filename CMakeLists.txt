@@ -5,7 +5,6 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_definitions(-Wall -Wpedantic)
 
-find_package(Threads)
 find_package(PostgreSQL)
 find_package(Boost 1.69.0 COMPONENTS system filesystem unit_test_framework REQUIRED)
 
@@ -29,7 +28,6 @@ set(
 
 set(
         MIR_SOURCE
-        src/mir/Migrator.cpp src/mir/Migrator.hpp
         src/mir/CommandLineInterface.cpp src/mir/CommandLineInterface.hpp
         src/mir/UpMigrator.cpp src/mir/UpMigrator.hpp
         src/mir/DownMigrator.cpp src/mir/DownMigrator.hpp
@@ -73,18 +71,17 @@ target_compile_definitions(mir_test PRIVATE UNIT_TESTING=1)
 target_compile_definitions(db_test PRIVATE UNIT_TESTING=1)
 
 target_link_libraries(mir ${LIBS})
-target_link_libraries(mir ${CMAKE_THREAD_LIBS_INIT})
-target_link_libraries(mir ${Boost_LIBRARIES})
+target_link_libraries(mir ${Boost_SYSTEM_LIBRARY_RELEASE})
+target_link_libraries(mir ${Boost_FILESYSTEM_LIBRARY_RELEASE})
+target_link_libraries(mir ${Boost_FILESYSTEM_LIBRARY_RELEASE})
 target_link_libraries(mir ${PostgreSQL_LIBRARIES})
 
 target_link_libraries(db_test utils)
-target_link_libraries(db_test ${CMAKE_THREAD_LIBS_INIT})
 target_link_libraries(db_test ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 target_link_libraries(db_test ${Boost_LIBRARIES})
 target_link_libraries(db_test ${PostgreSQL_LIBRARIES})
 
 target_link_libraries(mir_test ${LIBS})
-target_link_libraries(mir_test ${CMAKE_THREAD_LIBS_INIT})
 target_link_libraries(mir_test ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 target_link_libraries(mir_test ${Boost_LIBRARIES})
 target_link_libraries(mir_test ${PostgreSQL_LIBRARIES})
