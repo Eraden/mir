@@ -1,6 +1,7 @@
 //
 // Created by eraden on 10.02.19.
 //
+#include <algorithm>
 
 #include <mir/MigrationDirectoryReader.hpp>
 #include <mir/DownMigrator.hpp>
@@ -11,7 +12,7 @@
 namespace DownMigrator {
     DownMigrator::DownMigrator(CommandLineInterface *cli) :
             cli(cli),
-            url(std::move(cli->url)),
+            url(cli->url),
             connection(std::make_unique<Database::Connection>(cli->url->c_str(), cli->logger)) {
     }
 
@@ -25,6 +26,10 @@ namespace DownMigrator {
             return false;
 
         auto entries = MigrationDirectoryReader::readMigrationDirectory(cli);
+
+        std::sort(entries.begin(), entries.end(), [&](auto &a, auto &b) {
+            return b.migration - a.migration;
+        });
 
         const auto &row = rows.back();
         for (const auto &e : entries) {

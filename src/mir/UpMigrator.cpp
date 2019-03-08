@@ -2,6 +2,8 @@
 // Created by eraden on 10.02.19.
 //
 
+#include <algorithm>
+
 #include <mir/UpMigrator.hpp>
 #include <mir/CommandLineInterface.hpp>
 #include <mir/MigrationDirectoryReader.hpp>
@@ -22,6 +24,9 @@ namespace UpMigrator {
         }
         auto rows = query.getResult();
         auto entries = MigrationDirectoryReader::readMigrationDirectory(cli);
+        std::sort(entries.begin(), entries.end(), [&](auto &a, auto &b) {
+            return a.migration - b.migration;
+        });
 
         for (const auto &e : entries) {
             auto exists = std::any_of(rows.begin(), rows.end(), [&](const auto &row) {
