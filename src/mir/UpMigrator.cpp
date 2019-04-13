@@ -4,11 +4,11 @@
 
 #include <algorithm>
 
-#include <mir/UpMigrator.hpp>
-#include <mir/CommandLineInterface.hpp>
-#include <mir/MigrationDirectoryReader.hpp>
-#include <mir/LoadMigrationsQuery.hpp>
-#include <mir/RunMigrationQuery.hpp>
+#include <mir/mir/UpMigrator.hpp>
+#include <mir/mir/CommandLineInterface.hpp>
+#include <mir/mir/MigrationDirectoryReader.hpp>
+#include <mir/mir/LoadMigrationsQuery.hpp>
+#include <mir/mir/RunMigrationQuery.hpp>
 
 namespace UpMigrator {
     UpMigrator::UpMigrator(CommandLineInterface *cli) :

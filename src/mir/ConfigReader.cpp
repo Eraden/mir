@@ -2,9 +2,9 @@
 // Created by eraden on 10.02.19.
 //
 
-#include <mir/ConfigReader.hpp>
-#include <mir/CommandLineInterface.hpp>
-#include "db/Url.hpp"
+#include <mir/mir/ConfigReader.hpp>
+#include <mir/mir/CommandLineInterface.hpp>
+#include <mir/db/Url.hpp>
 
 using namespace std;
 namespace fs = boost::filesystem;

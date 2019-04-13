@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <db/Query.hpp>
+#include <mir/db/Query.hpp>
 
 class RunMigrationQuery : public Database::Query<int> {
 public:

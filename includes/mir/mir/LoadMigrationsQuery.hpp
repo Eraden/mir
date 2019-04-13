@@ -5,7 +5,7 @@
 #pragma once
 
 #include <libpq-fe.h>
-#include <db/Query.hpp>
+#include <mir/db/Query.hpp>
 
 struct Migration {
     unsigned long id;

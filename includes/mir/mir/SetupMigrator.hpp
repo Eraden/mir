@@ -7,9 +7,9 @@
 #include <string>
 #include <memory>
 
-#include <db/Connection.hpp>
-#include <db/Query.hpp>
-#include <db/Url.hpp>
+#include <mir/db/Connection.hpp>
+#include <mir/db/Query.hpp>
+#include <mir/db/Url.hpp>
 
 class CommandLineInterface;
 

@@ -2,8 +2,8 @@
 // Created by eraden on 10.02.19.
 //
 
-#include "mir/SetupMigrator.hpp"
-#include <mir/CommandLineInterface.hpp>
+#include <mir/mir/SetupMigrator.hpp>
+#include <mir/mir/CommandLineInterface.hpp>
 
 namespace SetupMigrator {
     SetupMigrator::SetupMigrator(CommandLineInterface *cli) :

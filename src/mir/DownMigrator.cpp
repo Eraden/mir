@@ -3,11 +3,11 @@
 //
 #include <algorithm>
 
-#include <mir/MigrationDirectoryReader.hpp>
-#include <mir/DownMigrator.hpp>
-#include <mir/CommandLineInterface.hpp>
-#include <mir/LoadMigrationsQuery.hpp>
-#include <mir/RunMigrationQuery.hpp>
+#include <mir/mir/MigrationDirectoryReader.hpp>
+#include <mir/mir/DownMigrator.hpp>
+#include <mir/mir/CommandLineInterface.hpp>
+#include <mir/mir/LoadMigrationsQuery.hpp>
+#include <mir/mir/RunMigrationQuery.hpp>
 
 namespace DownMigrator {
     DownMigrator::DownMigrator(CommandLineInterface *cli) :

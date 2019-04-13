@@ -5,14 +5,27 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_definitions(-Wall -Wpedantic)
 
+set(Boost_USE_STATIC_LIBS ON)
+
 find_package(PostgreSQL)
 find_package(Boost 1.69.0 COMPONENTS system filesystem unit_test_framework REQUIRED)
 
 include_directories(${PostgreSQL_INCLUDE_DIRS})
-include_directories(src includes/mir)
+include_directories(src includes)
 
 message(INFO " Psql version ${PostgreSQL_VERSION_STRING}")
 message(INFO " Boost.Test libraries ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}")
+
+file(GLOB DB_INCLUDES_FILES "includes/mir/db/*.hpp")
+file(GLOB MIR_INCLUDES_FILES "includes/mir/mir/*.hpp")
+file(GLOB UTILS_INCLUDES_FILES "includes/mir/utils/*.hpp")
+
+set(
+        INCLUDES_FILES
+        ${DB_INCLUDES_FILES}
+        ${MIR_INCLUDES_FILES}
+        ${UTILS_INCLUDES_FILES}
+)
 
 set(
         DB_SOURCE
@@ -27,6 +40,7 @@ set(
 
 set(
         MIR_SOURCE
+        ${INCLUDES_FILES}
         src/mir/CommandLineInterface.cpp
         src/mir/UpMigrator.cpp
         src/mir/DownMigrator.cpp
@@ -38,8 +52,6 @@ set(
 
 add_library(db STATIC ${DB_SOURCE})
 add_library(utils STATIC ${UTILS_SOURCE})
-
-file(GLOB INCLUDES_FILES "includes/mir/**/*.hpp")
 
 set(LIBS db utils)
 
@@ -81,4 +93,8 @@ install(
         INCLUDES DESTINATION includes/mir
 )
 
-install (FILES ${INCLUDES_FILES} DESTINATION include/mir)
+message(INFO " includes ${INCLUDES_FILES}")
+
+install(FILES ${DB_INCLUDES_FILES} DESTINATION include/mir/db)
+install(FILES ${MIR_INCLUDES_FILES} DESTINATION include/mir/mir)
+install(FILES ${UTILS_INCLUDES_FILES} DESTINATION include/mir/utils)

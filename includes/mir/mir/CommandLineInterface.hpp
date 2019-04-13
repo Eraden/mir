@@ -8,12 +8,13 @@
 #include <iostream>
 #include <boost/filesystem/path.hpp>
 #include <boost/filesystem/operations.hpp>
-#include <db/Connection.hpp>
-#include <db/Url.hpp>
-#include <utils/Logger.hpp>
-#include <mir/CommandLineInterface.hpp>
-#include <mir/UpMigrator.hpp>
-#include <mir/SetupMigrator.hpp>
+
+#include <mir/db/Connection.hpp>
+#include <mir/db/Url.hpp>
+#include <mir/utils/Logger.hpp>
+#include <mir/mir/CommandLineInterface.hpp>
+#include <mir/mir/UpMigrator.hpp>
+#include <mir/mir/SetupMigrator.hpp>
 
 using namespace std;
 namespace fs = boost::filesystem;

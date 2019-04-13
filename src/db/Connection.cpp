@@ -2,7 +2,7 @@
 // Created by eraden on 09.02.19.
 //
 
-#include <db/Connection.hpp>
+#include <mir/db/Connection.hpp>
 
 namespace Database {
     Connection::Connection(const char *connInfo, std::shared_ptr<Logger> logger) :

@@ -2,8 +2,8 @@
 // Created by eraden on 11.02.19.
 //
 
-#include "mir/Generator.hpp"
-#include <mir/CommandLineInterface.hpp>
+#include <mir/mir/Generator.hpp>
+#include <mir/mir/CommandLineInterface.hpp>
 
 namespace mir {
     TableGenerator::TableGenerator(

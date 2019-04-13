@@ -2,8 +2,8 @@
 // Created by eraden on 10.02.19.
 //
 
-#include <mir/MigrationDirectoryReader.hpp>
-#include <mir/CommandLineInterface.hpp>
+#include <mir/mir/MigrationDirectoryReader.hpp>
+#include <mir/mir/CommandLineInterface.hpp>
 
 namespace MigrationDirectoryReader {
     bool isMigrationDirectory(const std::string &name) {

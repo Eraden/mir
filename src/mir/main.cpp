@@ -1,15 +1,15 @@
 #include <string>
 #include <iostream>
 
-#include <db/Connection.hpp>
-#include <db/Url.hpp>
-#include <utils/Logger.hpp>
-#include <mir/CommandLineInterface.hpp>
-#include <mir/UpMigrator.hpp>
-#include <mir/DownMigrator.hpp>
-#include <mir/SetupMigrator.hpp>
-#include <mir/Generator.hpp>
-#include <mir/ConfigReader.hpp>
+#include <mir/db/Connection.hpp>
+#include <mir/db/Url.hpp>
+#include <mir/utils/Logger.hpp>
+#include <mir/mir/CommandLineInterface.hpp>
+#include <mir/mir/UpMigrator.hpp>
+#include <mir/mir/DownMigrator.hpp>
+#include <mir/mir/SetupMigrator.hpp>
+#include <mir/mir/Generator.hpp>
+#include <mir/mir/ConfigReader.hpp>
 
 using namespace std;
 

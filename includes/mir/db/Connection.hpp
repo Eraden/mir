@@ -9,8 +9,8 @@
 #include <memory>
 #include <libpq-fe.h>
 
-#include <utils/Logger.hpp>
-#include "Query.hpp"
+#include <mir/utils/Logger.hpp>
+#include <mir/db/Query.hpp>
 
 using namespace std;
 

@@ -2,7 +2,7 @@
 // Created by eraden on 10.02.19.
 //
 
-#include "mir/RunMigrationQuery.hpp"
+#include <mir/mir/RunMigrationQuery.hpp>
 
 using namespace std;
 
