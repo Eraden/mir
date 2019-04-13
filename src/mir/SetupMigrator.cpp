@@ -2,7 +2,7 @@
 // Created by eraden on 10.02.19.
 //
 
-#include "SetupMigrator.hpp"
+#include "mir/SetupMigrator.hpp"
 #include <mir/CommandLineInterface.hpp>
 
 namespace SetupMigrator {

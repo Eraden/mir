@@ -6,6 +6,7 @@
 
 #include <string>
 #include <memory>
+
 #include <db/Connection.hpp>
 #include <db/Query.hpp>
 #include <db/Url.hpp>

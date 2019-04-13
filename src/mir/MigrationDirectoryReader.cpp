@@ -2,7 +2,7 @@
 // Created by eraden on 10.02.19.
 //
 
-#include "MigrationDirectoryReader.hpp"
+#include <mir/MigrationDirectoryReader.hpp>
 #include <mir/CommandLineInterface.hpp>
 
 namespace MigrationDirectoryReader {

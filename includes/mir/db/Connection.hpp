@@ -10,7 +10,7 @@
 #include <libpq-fe.h>
 
 #include <utils/Logger.hpp>
-#include <db/Query.hpp>
+#include "Query.hpp"
 
 using namespace std;
 

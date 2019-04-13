@@ -2,7 +2,7 @@
 // Created by eraden on 10.02.19.
 //
 
-#include "Logger.hpp"
+#include "utils/Logger.hpp"
 
 void Logger::log(string msg) {
     std::time_t t = std::time(nullptr);

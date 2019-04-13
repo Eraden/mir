@@ -2,7 +2,7 @@
 // Created by eraden on 10.02.19.
 //
 
-#include "LoadMigrationsQuery.hpp"
+#include "mir/LoadMigrationsQuery.hpp"
 
 const char *LoadMigrationsQuery::SELECT_MIGRATIONS = R"(SELECT id, migration FROM _mir_migrations ORDER BY migration;)";
 

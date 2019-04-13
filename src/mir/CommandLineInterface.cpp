@@ -2,7 +2,7 @@
 // Created by eraden on 09.02.19.
 //
 
-#include "CommandLineInterface.hpp"
+#include "mir/CommandLineInterface.hpp"
 
 const char *CommandLineInterface::HELP = R"(mir - migrate your database
     --help | -h                                       display this message

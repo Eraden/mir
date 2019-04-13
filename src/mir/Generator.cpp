@@ -2,7 +2,7 @@
 // Created by eraden on 11.02.19.
 //
 
-#include "Generator.hpp"
+#include "mir/Generator.hpp"
 #include <mir/CommandLineInterface.hpp>
 
 namespace mir {
