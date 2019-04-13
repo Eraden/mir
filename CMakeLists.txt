@@ -50,10 +50,10 @@ set(
         src/mir/LoadMigrationsQuery.cpp
 )
 
-add_library(db STATIC ${DB_SOURCE})
-add_library(utils STATIC ${UTILS_SOURCE})
+add_library(mirdb STATIC ${DB_SOURCE})
+add_library(mirutils STATIC ${UTILS_SOURCE})
 
-set(LIBS db utils)
+set(LIBS mirdb mirutils)
 
 add_executable(mir ${MIR_SOURCE} src/mir/main.cpp src/mir/ConfigReader.cpp src/mir/Generator.cpp)
 
@@ -70,7 +70,7 @@ target_link_libraries(mir ${Boost_FILESYSTEM_LIBRARY_RELEASE})
 target_link_libraries(mir ${Boost_FILESYSTEM_LIBRARY_RELEASE})
 target_link_libraries(mir ${PostgreSQL_LIBRARIES})
 
-target_link_libraries(db_test utils)
+target_link_libraries(db_test mirutils)
 target_link_libraries(db_test ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 target_link_libraries(db_test ${Boost_LIBRARIES})
 target_link_libraries(db_test ${PostgreSQL_LIBRARIES})
@@ -86,7 +86,7 @@ add_test(NAME MirTest COMMAND ./mir_test)
 add_test(NAME DbTest COMMAND ./db_test)
 
 install(
-        TARGETS mir db utils
+        TARGETS mir mirdb mirutils
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib/mir
         ARCHIVE DESTINATION lib/mir
