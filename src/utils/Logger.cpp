@@ -36,14 +36,18 @@ void Logger::error(string msg) {
         send(msg, Severity::ERROR, now, programName);
 }
 
-void Logger::send(const std::string &msg, Logger::Severity severity, std::tm *timestamp, const char *programName) {
+void Logger::send(const std::string &msg, Logger::Severity severity, std::tm *timestamp, const std::string &programName) {
     for (auto &out : outputs) {
         out->receive(msg, severity, timestamp, programName);
     }
 }
 
-void StandardConsoleOutput::receive(const std::string &msg, Logger::Severity severity, std::tm *timestamp,
-                                    const char *programName) {
+void StandardConsoleOutput::receive(
+        const std::string &msg,
+        Logger::Severity severity,
+        std::tm *timestamp,
+        const std::string &programName
+) {
     std::stringstream ss;
     std::stringstream mss;
     for (const auto &c : msg) {

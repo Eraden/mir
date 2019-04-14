@@ -26,6 +26,7 @@ public:
     };
 
     explicit Logger(const char *programName) : programName(programName), severity(Severity::ERROR) {}
+    explicit Logger(std::string programName) : programName(programName), severity(Severity::ERROR) {}
 
     void log(string msg);
 
@@ -39,20 +40,20 @@ public:
 
     inline void addReceiver(const shared_ptr<Output> &output) { outputs.push_back(output); }
 private:
-    const char *programName;
+    std::string programName;
     Severity severity;
     std::vector<shared_ptr<Output>> outputs;
 
-    void send(const std::string &msg, Severity severity, std::tm *timestamp, const char *programName);
+    void send(const std::string &msg, Severity severity, std::tm *timestamp, const std::string &programNam);
 };
 
 class Output {
 public:
-    virtual void receive(const std::string &msg, Logger::Severity severity, std::tm *timestamp, const char *programName) = 0;
+    virtual void receive(const std::string &msg, Logger::Severity severity, std::tm *timestamp, const std::string &programNam) = 0;
 };
 
 class StandardConsoleOutput : public Output {
 public:
     virtual ~StandardConsoleOutput() = default;
-    void receive(const std::string &msg, Logger::Severity severity, std::tm *timestamp, const char *programName) override;
+    void receive(const std::string &msg, Logger::Severity severity, std::tm *timestamp, const std::string &programNam) override;
 };

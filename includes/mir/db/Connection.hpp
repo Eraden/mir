@@ -18,6 +18,7 @@ namespace Database {
     class Connection {
     public:
         explicit Connection(const char *connInfo, std::shared_ptr<Logger> logger);
+        explicit Connection(const std::string connInfo, std::shared_ptr<Logger> logger);
 
         ~Connection();
 
@@ -70,6 +71,7 @@ namespace Database {
         }
 
     private:
+        std::string connInfo;
         PGconn *conn = nullptr;
         std::shared_ptr<Logger> logger = nullptr;
 

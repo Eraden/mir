@@ -5,9 +5,21 @@
 #include <mir/db/Connection.hpp>
 
 namespace Database {
-    Connection::Connection(const char *connInfo, std::shared_ptr<Logger> logger) :
+    Connection::Connection(const std::string connInfo, std::shared_ptr<Logger> logger) :
+            connInfo(connInfo),
             logger(std::move(logger)) {
-        conn = PQconnectdb(connInfo);
+        conn = PQconnectdb(this->connInfo.c_str());
+
+        if (PQstatus(conn) != CONNECTION_OK) {
+            fprintf(stderr, "Connection to db failed: %s", PQerrorMessage(conn));
+            exitNicely();
+        }
+    }
+
+    Connection::Connection(const char *connInfo, std::shared_ptr<Logger> logger) :
+            connInfo(connInfo),
+            logger(std::move(logger)) {
+        conn = PQconnectdb(this->connInfo.c_str());
 
         if (PQstatus(conn) != CONNECTION_OK) {
             fprintf(stderr, "Connection to db failed: %s", PQerrorMessage(conn));
