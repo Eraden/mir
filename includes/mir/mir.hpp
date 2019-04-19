@@ -15,4 +15,3 @@
 #include <mir/mir/UpMigrator.hpp>
 
 #include <mir/utils/Logger.hpp>
-
