@@ -8,6 +8,7 @@
 #include <sstream>
 #include <memory>
 #include <libpq-fe.h>
+#include <boost/utility/string_view.hpp>
 
 #include <mir/utils/Logger.hpp>
 #include <mir/db/Query.hpp>
@@ -94,7 +95,7 @@ namespace Database {
             return s;
         }
 
-        std::string_view trim(std::string_view s) const {
+	boost::string_view trim(boost::string_view s) const {
             s.remove_prefix(std::min(s.find_first_not_of(" \t\r\v\n"), s.size()));
             s.remove_suffix((s.size() - 1) - std::min(s.find_last_not_of(" \t\r\v\n"), s.size() - 1));
 
