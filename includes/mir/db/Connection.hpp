@@ -18,9 +18,9 @@ using namespace std;
 namespace Database {
     class Connection {
     public:
-        explicit Connection(const char *connInfo, std::shared_ptr<Logger> logger);
+        explicit Connection(const char *connInfo, std::shared_ptr <Logger> logger);
 
-        explicit Connection(const std::string connInfo, std::shared_ptr<Logger> logger);
+        explicit Connection(const std::string connInfo, std::shared_ptr <Logger> logger);
 
         ~Connection();
 
@@ -76,7 +76,7 @@ namespace Database {
     private:
         std::string connInfo;
         PGconn *conn = nullptr;
-        std::shared_ptr<Logger> logger = nullptr;
+        std::shared_ptr <Logger> logger = nullptr;
 
         void exitNicely();
 
@@ -95,7 +95,7 @@ namespace Database {
             return s;
         }
 
-	boost::string_view trim(boost::string_view s) const {
+        boost::string_view trim(boost::string_view s) const {
             s.remove_prefix(std::min(s.find_first_not_of(" \t\r\v\n"), s.size()));
             s.remove_suffix((s.size() - 1) - std::min(s.find_last_not_of(" \t\r\v\n"), s.size() - 1));
 

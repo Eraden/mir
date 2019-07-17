@@ -41,11 +41,13 @@ public:
     void printHelp();
 
     fs::path getMigrationsDir();
+    fs::path getRelativeMigrationDir();
 
     void changeMigrationsDir(const boost::filesystem::path &path);
 
     bool isDatabaseRequired();
 private:
     static const char *HELP;
+    std::shared_ptr<boost::filesystem::path> relativeMigrationsDir = nullptr;
     std::shared_ptr<boost::filesystem::path> migrationsDir = nullptr;
 };

@@ -29,9 +29,16 @@ void CommandLineInterface::printHelp() {
 fs::path CommandLineInterface::getMigrationsDir() {
     if (migrationsDir == nullptr) {
         auto pwd = fs::current_path();
-        migrationsDir = std::make_shared<fs::path>(fs::absolute(pwd / "db" / "migrations"));
+        migrationsDir = std::make_shared<fs::path>(fs::absolute(pwd / getRelativeMigrationDir()));
     }
     return *migrationsDir;
+}
+
+fs::path CommandLineInterface::getRelativeMigrationDir() {
+    if (relativeMigrationsDir == nullptr) {
+        relativeMigrationsDir = std::make_shared<fs::path>(fs::path("db") / "migrations");
+    }
+    return *relativeMigrationsDir;
 }
 
 void CommandLineInterface::changeMigrationsDir(const boost::filesystem::path &path) {

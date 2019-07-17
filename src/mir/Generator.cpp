@@ -68,9 +68,11 @@ namespace mir {
 
     void TableGenerator::run() {
         auto migrationsDir = cli->getMigrationsDir();
+        auto relative = cli->getRelativeMigrationDir();
+
         if (!fs::exists(migrationsDir)) {
-            cli->logger->error("Migration directory does not exists!");
-            std::exit(1);
+            fs::create_directories(migrationsDir);
+            cli->logger->error("Migration directory does not exists, creating...");
         }
         std::stringstream ss;
         std::time_t t = std::time(nullptr);
@@ -78,10 +80,13 @@ namespace mir {
         char time[1024];
         strftime(time, 1024, "%Y%m%d%H%M%S", now);
         ss << time << "_" << tableName;
-        auto dir = migrationsDir / ss.str();
+        auto targetDir = ss.str();
+        auto dir = migrationsDir / targetDir;
         fs::create_directory(dir);
 
+        std::cout << "\troot (.)" << std::endl;
         fs::ofstream upStream(dir / "up.psql");
+        std::cout << "\t├─ " << (relative / targetDir / "up.psql").string() << std::endl;
         upStream << "CREATE TABLE " << tableName << " (" << std::endl;
         for (auto it = fields.begin(), end = fields.end(); it != end; ++it) {
             const auto &field = *it;
@@ -101,6 +106,7 @@ namespace mir {
         upStream << ");" << std::endl;
 
         fs::ofstream downStream(dir / "down.psql");
+        std::cout << "\t└─ " << (relative / targetDir / "down.psql").string() << std::endl;
         downStream << "DROP TABLE " << tableName << ";" << std::endl;
     }
 
