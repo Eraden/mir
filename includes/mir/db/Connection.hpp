@@ -11,6 +11,8 @@
 #include <boost/utility/string_view.hpp>
 
 #include <mir/utils/Logger.hpp>
+#include <mir/utils/SqlPrinter.hpp>
+#include <mir/utils/SqlPrinterData.hpp>
 #include <mir/db/Query.hpp>
 
 using namespace std;
@@ -28,7 +30,7 @@ namespace Database {
         bool execute(Query<Model> *query) {
             bool success = false;
             std::string sql = prepareSql(std::string(query->query()));
-            logger->info(sql);
+            logger->info(SqlPrinter::SqlPrinter::call(sql));
             pg_result *res = PQexecParams(
                     conn,
                     sql.c_str(), query->argc(),
@@ -46,7 +48,7 @@ namespace Database {
             } else {
                 std::stringstream ss;
                 std::string statusName = getStatusName(status);
-                ss << "[" << statusName << "] Query failed: " << PQerrorMessage(conn);
+                ss << "[" << COLOR_RED << statusName << COLOR_NC << "] Query failed: " << PQerrorMessage(conn);
                 logger->error(ss.str());
             }
             PQclear(res);
@@ -56,8 +58,9 @@ namespace Database {
         template<class Model>
         bool executeSql(Query<Model> *query) {
             bool success = false;
-            logger->info(query->query());
-            pg_result *res = PQexec(conn, query->query());
+            const auto sql = query->query();
+            logger->info(SqlPrinter::SqlPrinter::call(sql));
+            pg_result *res = PQexec(conn, sql);
 
             auto status = PQresultStatus(res);
             if (isOk(status)) {
@@ -66,7 +69,7 @@ namespace Database {
             } else {
                 std::stringstream ss;
                 std::string statusName = getStatusName(status);
-                ss << "[" << statusName << "] Query failed: " << PQerrorMessage(conn);
+                ss << "[" << COLOR_RED << statusName << COLOR_NC << "] Query failed: " << PQerrorMessage(conn);
                 logger->error(ss.str());
             }
             PQclear(res);

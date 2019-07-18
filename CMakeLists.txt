@@ -36,6 +36,7 @@ set(
 set(
         UTILS_SOURCE
         src/utils/Logger.cpp
+        src/utils/SqlPrinter.cpp
 )
 
 set(

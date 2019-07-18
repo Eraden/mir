@@ -4,6 +4,7 @@
 #include <mir/db/Connection.hpp>
 #include <mir/db/Url.hpp>
 #include <mir/utils/Logger.hpp>
+#include <mir/utils/SqlPrinter.hpp>
 #include <mir/mir/CommandLineInterface.hpp>
 #include <mir/mir/UpMigrator.hpp>
 #include <mir/mir/DownMigrator.hpp>
@@ -19,6 +20,12 @@ int main(int argc, char **argv) {
 
     for (int i = 0; i < argc; i++) {
         std::string v = argv[i];
+        if (v == "test") {
+            std::string sql = R"(INSERT INTO users(login, email) VALUES ($1, $2) RETURNING * ["Adi", "adi@example.com"])";
+            SqlPrinter::SqlPrinter().call(sql);
+            return 0;
+        }
+
         if (v == "--help" || v == "-h") {
             cli.action = CommandLineInterface::Action::Help;
             break;

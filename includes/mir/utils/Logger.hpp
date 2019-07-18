@@ -11,6 +11,7 @@
 #include <sstream>
 #include <ctime>
 #include <memory>
+#include <mir/utils/SqlPrinterData.hpp>
 
 using namespace std;
 
@@ -26,6 +27,7 @@ public:
     };
 
     explicit Logger(const char *programName) : programName(programName), severity(Severity::ERROR) {}
+
     explicit Logger(std::string programName) : programName(programName), severity(Severity::ERROR) {}
 
     void log(string msg);
@@ -41,6 +43,7 @@ public:
     inline void addReceiver(const shared_ptr<Output> &output) { outputs.push_back(output); }
 
     inline void mute() { muted = true; }
+
 private:
     bool muted = false;
     std::string programName;
@@ -52,11 +55,14 @@ private:
 
 class Output {
 public:
-    virtual void receive(const std::string &msg, Logger::Severity severity, std::tm *timestamp, const std::string &programNam) = 0;
+    virtual void
+    receive(const std::string &msg, Logger::Severity severity, std::tm *timestamp, const std::string &programNam) = 0;
 };
 
 class StandardConsoleOutput : public Output {
 public:
     virtual ~StandardConsoleOutput() = default;
-    void receive(const std::string &msg, Logger::Severity severity, std::tm *timestamp, const std::string &programNam) override;
+
+    void receive(const std::string &msg, Logger::Severity severity, std::tm *timestamp,
+                 const std::string &programNam) override;
 };
