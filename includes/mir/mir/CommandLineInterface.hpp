@@ -26,7 +26,8 @@ public:
         MigrateUp,
         MigrateDown,
         Help,
-        Generate
+        Generate,
+        Check
     };
 
     CommandLineInterface();
@@ -40,12 +41,19 @@ public:
 
     void printHelp();
 
+    void printVersion();
+
+    void setQuite();
+
     fs::path getMigrationsDir();
+
     fs::path getRelativeMigrationDir();
 
     void changeMigrationsDir(const boost::filesystem::path &path);
 
     bool isDatabaseRequired();
+
+    static const char *VERSION;
 private:
     static const char *HELP;
     std::shared_ptr<boost::filesystem::path> relativeMigrationsDir = nullptr;

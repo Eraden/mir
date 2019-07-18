@@ -55,7 +55,7 @@ add_library(mirutils STATIC ${UTILS_SOURCE})
 
 set(LIBS mirdb mirutils)
 
-add_executable(mir ${MIR_SOURCE} src/mir/main.cpp src/mir/ConfigReader.cpp src/mir/Generator.cpp)
+add_executable(mir ${MIR_SOURCE} src/mir/main.cpp src/mir/ConfigReader.cpp src/mir/Generator.cpp src/mir/CheckRunner.cpp)
 
 # tests
 add_executable(mir_test ${MIR_SOURCE} src/mir/test.cpp)

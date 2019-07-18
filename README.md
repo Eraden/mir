@@ -16,6 +16,8 @@ mir gen table table_name field_name:field_type:default_value field_name:field_ty
 mir gen t table_name field_name:field_type:default_value field_name:field_type:default_value
 mir g t table_name field_name:field_type:default_value field_name:field_type:default_value
 mir gt table_name field_name:field_type:default_value field_name:field_type:default_value
+mir up
+mir down
 ```
 
 ### Generate table

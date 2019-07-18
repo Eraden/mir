@@ -8,6 +8,7 @@
 #include <mir/mir/UpMigrator.hpp>
 #include <mir/mir/DownMigrator.hpp>
 #include <mir/mir/SetupMigrator.hpp>
+#include <mir/mir/CheckRunner.hpp>
 #include <mir/mir/Generator.hpp>
 #include <mir/mir/ConfigReader.hpp>
 
@@ -28,6 +29,11 @@ int main(int argc, char **argv) {
             Database::UrlParser urlParser;
             urlParser.parse(cli.url, url);
             i += 1;
+        } else if (v == "-v" || v == "--version") {
+            cli.printVersion();
+            std::exit(0);
+        } else if (v == "check") {
+            cli.action = CommandLineInterface::Action::Check;
         } else if (v == "up") {
             cli.action = CommandLineInterface::Action::MigrateUp;
         } else if (v == "down") {
@@ -36,6 +42,8 @@ int main(int argc, char **argv) {
             cli.action = CommandLineInterface::Action::Setup;
         } else if (mir::Generator::match(v)) {
             cli.action = CommandLineInterface::Action::Generate;
+        } else if (v == "-q" || v == "--quite") {
+            cli.setQuite();
         }
     }
     ConfigReader configReader(&cli);
@@ -69,6 +77,11 @@ int main(int argc, char **argv) {
         case CommandLineInterface::Action::Generate: {
             mir::Generator generator(&cli, argc, argv);
             generator.run();
+            break;
+        }
+        case CommandLineInterface::Action::Check: {
+            CheckRunner::CheckRunner checkRunner(&cli);
+            if (!checkRunner.run()) return 1;
             break;
         }
     }

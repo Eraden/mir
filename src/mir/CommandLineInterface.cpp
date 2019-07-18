@@ -4,6 +4,8 @@
 
 #include <mir/mir/CommandLineInterface.hpp>
 
+const char *CommandLineInterface::VERSION = "mir 1.0.0";
+
 const char *CommandLineInterface::HELP = R"(mir - migrate your database
     --help | -h                                       display this message
     --url                                             database url
@@ -24,6 +26,10 @@ CommandLineInterface::CommandLineInterface() :
 
 void CommandLineInterface::printHelp() {
     std::cout << HELP << std::endl;
+}
+
+void CommandLineInterface::printVersion() {
+    std::cout << VERSION << std::endl;
 }
 
 fs::path CommandLineInterface::getMigrationsDir() {
@@ -47,4 +53,8 @@ void CommandLineInterface::changeMigrationsDir(const boost::filesystem::path &pa
 
 bool CommandLineInterface::isDatabaseRequired() {
     return !(action == Action::Help || action == Action::Generate);
+}
+
+void CommandLineInterface::setQuite() {
+    logger->mute();
 }

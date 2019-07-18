@@ -13,6 +13,7 @@ namespace Database {
         if (PQstatus(conn) != CONNECTION_OK) {
             fprintf(stderr, "Connection to db failed: %s\n\tPlease check current ./.mir file", PQerrorMessage(conn));
             exitNicely();
+            std::exit(1);
         }
     }
 
@@ -24,6 +25,7 @@ namespace Database {
         if (PQstatus(conn) != CONNECTION_OK) {
             fprintf(stderr, "Connection to db failed: %s\n\tPlease check current ./.mir file", PQerrorMessage(conn));
             exitNicely();
+            std::exit(1);
         }
     }
 
@@ -33,7 +35,6 @@ namespace Database {
 
     void Connection::exitNicely() {
         PQfinish(conn);
-        std::exit(1);
     }
 
     std::string Connection::getStatusName(ExecStatusType status) {

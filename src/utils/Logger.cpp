@@ -37,6 +37,7 @@ void Logger::error(string msg) {
 }
 
 void Logger::send(const std::string &msg, Logger::Severity severity, std::tm *timestamp, const std::string &programName) {
+    if (muted) return;
     for (auto &out : outputs) {
         out->receive(msg, severity, timestamp, programName);
     }

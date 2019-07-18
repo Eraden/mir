@@ -39,7 +39,10 @@ public:
     inline void setSeverity(Severity severity) { this->severity = severity; }
 
     inline void addReceiver(const shared_ptr<Output> &output) { outputs.push_back(output); }
+
+    inline void mute() { muted = true; }
 private:
+    bool muted = false;
     std::string programName;
     Severity severity;
     std::vector<shared_ptr<Output>> outputs;
