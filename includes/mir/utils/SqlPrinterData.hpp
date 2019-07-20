@@ -7,25 +7,25 @@
 #include <string>
 #include <vector>
 
-const std::string COLOR_NC = "\x1b[0m"; // No Color
-const std::string COLOR_WHITE = "\x1b[1;37m";
-const std::string COLOR_BLACK = "\x1b[0;30m";
-const std::string COLOR_BLUE = "\x1b[0;34m";
-const std::string COLOR_LIGHT_BLUE = "\x1b[1;34m";
-const std::string COLOR_GREEN = "\x1b[0;32m";
-const std::string COLOR_LIGHT_GREEN = "\x1b[1;32m";
-const std::string COLOR_CYAN = "\x1b[0;36m";
-const std::string COLOR_LIGHT_CYAN = "\x1b[1;36m";
-const std::string COLOR_RED = "\x1b[0;31m";
-const std::string COLOR_LIGHT_RED = "\x1b[1;31m";
-const std::string COLOR_PURPLE = "\x1b[0;35m";
-const std::string COLOR_LIGHT_PURPLE = "\x1b[1;35m";
-const std::string COLOR_BROWN = "\x1b[0;33m";
-const std::string COLOR_YELLOW = "\x1b[1;33m";
-const std::string COLOR_GRAY = "\x1b[0;30m";
-const std::string COLOR_LIGHT_GRAY = "\x1b[0;37m";
+static const char* COLOR_NC = "\x1b[0m"; // No Color
+static const char* COLOR_WHITE = "\x1b[1;37m";
+static const char* COLOR_BLACK = "\x1b[0;30m";
+static const char* COLOR_BLUE = "\x1b[0;34m";
+static const char* COLOR_LIGHT_BLUE = "\x1b[1;34m";
+static const char* COLOR_GREEN = "\x1b[0;32m";
+static const char* COLOR_LIGHT_GREEN = "\x1b[1;32m";
+static const char* COLOR_CYAN = "\x1b[0;36m";
+static const char* COLOR_LIGHT_CYAN = "\x1b[1;36m";
+static const char* COLOR_RED = "\x1b[0;31m";
+static const char* COLOR_LIGHT_RED = "\x1b[1;31m";
+static const char* COLOR_PURPLE = "\x1b[0;35m";
+static const char* COLOR_LIGHT_PURPLE = "\x1b[1;35m";
+static const char* COLOR_BROWN = "\x1b[0;33m";
+static const char* COLOR_YELLOW = "\x1b[1;33m";
+static const char* COLOR_GRAY = "\x1b[0;30m";
+static const char* COLOR_LIGHT_GRAY = "\x1b[0;37m";
 
-const std::vector<std::string> KEYWORDS = {
+static const char* KEYWORDS[824] = {
         "A",
         "ABORT",
         "ABS",
@@ -852,7 +852,7 @@ const std::vector<std::string> KEYWORDS = {
         "ZONE"
 };
 
-const std::vector<std::string> OPERATORS = {
+static const char* OPERATORS[31] = {
         ">", ">=", "=", "<", "<=", "!", "|", "&", "||", "&&",
         "@@", "<@", "@>", "<<", ">>", "&<", "&>",
         "-|-", "<->",

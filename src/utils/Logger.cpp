@@ -63,16 +63,16 @@ void StandardConsoleOutput::receive(
     std::string severityName;
     switch (severity) {
         case Logger::LOG:
-            severityName = COLOR_BLUE + "LOG" + COLOR_NC;
+            severityName = severityName + COLOR_BLUE + "LOG" + COLOR_NC;
             break;
         case Logger::INFO:
-            severityName = COLOR_GREEN + "INFO" + COLOR_NC;
+            severityName = severityName + COLOR_GREEN + "INFO" + COLOR_NC;
             break;
         case Logger::WARN:
-            severityName = COLOR_YELLOW + "WARN" + COLOR_NC;
+            severityName = severityName + COLOR_YELLOW + "WARN" + COLOR_NC;
             break;
         case Logger::ERROR:
-            severityName = COLOR_RED + "ERROR" + COLOR_NC;
+            severityName = severityName + COLOR_RED + "ERROR" + COLOR_NC;
             break;
     }
 
